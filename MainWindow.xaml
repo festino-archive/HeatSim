@@ -1,0 +1,51 @@
+﻿<Window x:Class="HeatSim.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HeatSim"
+        mc:Ignorable="d"
+        Title="HeatSim" Height="600" Width="966" SizeChanged="MainWindow_SizeChanged" Loaded="MainWindow_Loaded" >
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <TextBlock x:Name="temp_log" HorizontalAlignment="Left" Margin="456,17,0,0" Text="TextBlock" TextWrapping="Wrap" VerticalAlignment="Top" Width="500" ScrollViewer.HorizontalScrollBarVisibility="Visible" Grid.ColumnSpan="2"/>
+        <Grid x:Name="scene1_panel">
+            <StackPanel>
+                <StackPanel x:Name="scene1_part1" Orientation="Horizontal" MinHeight="50" Margin="10,10,10,0">
+                </StackPanel>
+                <StackPanel x:Name="scene1_part2" Orientation="Horizontal" Height="280" Margin="10,0,10,0">
+                    <Canvas x:Name="system_U"/>
+                    <Canvas x:Name="system_V"/>
+                </StackPanel>
+                <Canvas x:Name="scene1_part3" HorizontalAlignment="Left" Height="60" Margin="10,0,10,0"/>
+            </StackPanel>
+            <Button x:Name="nextButton" Content="Далее" Height="50" FontSize="20" Padding="5,5,5,5" Margin="0,0,20,20" Click="nextButton_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+        </Grid>
+        <Grid x:Name="scene2_panel" Visibility="Hidden">
+            <Button x:Name="backButton" Content="Назад" Height="50" FontSize="20" Padding="5,5,5,5" Margin="0,0,20,20" Click="backButton_Click" HorizontalContentAlignment="Center" HorizontalAlignment="Right" VerticalAlignment="Bottom"/>
+            <StackPanel Orientation="Horizontal">
+                <StackPanel x:Name="scene2_buttons" Width="100" Margin="5,5,5,5">
+                    <RadioButton x:Name="check_fourier" GroupName="modeChoice" Margin="0,10,0,0" Padding="4,-1,0,0">
+                        <TextBlock Text="Фурье в t0" TextWrapping="Wrap"/>
+                    </RadioButton>
+                    <RadioButton x:Name="check_time" GroupName="modeChoice" Margin="0,5,0,10">
+                        <TextBlock Text="Развитие во времени" TextWrapping="Wrap"/>
+                    </RadioButton>
+                    <CheckBox x:Name="fixingCheckBox" ClickMode="Release" IsChecked="True">
+                        <TextBlock Text="Фиксировать область" TextWrapping="Wrap"/>
+                    </CheckBox>
+                    <Button x:Name="reButton" Content="Заново" MinHeight="40"/>
+                    <Button x:Name="stepButton" Content="Шаг" MinHeight="40"/>
+                    <Button x:Name="animationButton" Content="В динамику" MinHeight="40"/>
+                    <Label x:Name="animInfoLabel" Content="INFO BUGGED"/>
+                </StackPanel>
+                <StackPanel Margin="10,10,10,10">
+                    <Canvas x:Name="scene2_main" Width="500" Height="500"/>
+                    <StackPanel/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
