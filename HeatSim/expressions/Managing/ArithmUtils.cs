@@ -154,16 +154,21 @@ namespace HeatSim.expressions.Managing
                 if (!isCorrect)
                     return "NaNConst";
                 string res = digits.ToString();
+                bool isNegative = res[0] == '-';
+                if (isNegative)
+                    res = res.Substring(1);
                 if (mult10_pow < 0)
                 {
                     int sum = mult10_pow + res.Length;
-                    if (sum >= 0)
+                    if (sum > 0)
                         res = res.Insert(sum, ".");
                     else
                         res = "0." + new string('0', -sum) + res;
                 }
                 else if (mult10_pow > 0)
                     res = res + new string('0', mult10_pow);
+                if (isNegative)
+                    res = '-' + res;
                 return SimplifyNumber(res);
             }
 
