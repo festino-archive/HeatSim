@@ -108,7 +108,7 @@ namespace HeatSim.expressions.Managing
                     return v2;
                 if (v1.mult10_pow < v2.mult10_pow)
                     v2 = v2.Mult10inPow(v1.mult10_pow - v2.mult10_pow);
-                else if (v2.mult10_pow > v1.mult10_pow)
+                else if (v1.mult10_pow > v2.mult10_pow)
                     v1 = v1.Mult10inPow(v2.mult10_pow - v1.mult10_pow);
                 return new BigRational(v1.digits + v2.digits, v1.mult10_pow);
             }
