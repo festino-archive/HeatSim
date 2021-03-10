@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace HeatSim
 {
     // COPY OF ExprSimplifier WITH ExprConst->ExprDouble, BigRational->double
-    class ExprDoubleSimplifier
+    public class ExprDoubleSimplifier
     {
         public static IExpression SimplifyDouble(IExpression init)
         {

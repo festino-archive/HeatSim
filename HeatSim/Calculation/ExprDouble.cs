@@ -2,7 +2,7 @@
 
 namespace HeatSim
 {
-    class ExprDouble : IExpression
+    public class ExprDouble : IExpression
     {
         public static readonly Priority PRIORITY = Priority.NUMBERABLE;
 
