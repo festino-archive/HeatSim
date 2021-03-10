@@ -26,6 +26,8 @@ namespace HeatSim.expressions.Managing
             {
                 while (j >= 0 && exprConstVal[j] == '0')
                     j--;
+                if (exprConstVal[j] == '.')
+                    j--;
             }
             if (m % 2 == 0)
                 return exprConstVal.Substring(i, j + 1 - i);
@@ -153,10 +155,15 @@ namespace HeatSim.expressions.Managing
                     return "NaNConst";
                 string res = digits.ToString();
                 if (mult10_pow < 0)
-                    res = "0" + res.Insert(mult10_pow + res.Length, ".");
+                {
+                    int sum = mult10_pow + res.Length;
+                    if (sum >= 0)
+                        res = res.Insert(sum, ".");
+                    else
+                        res = "0." + new string('0', -sum) + res;
+                }
                 else if (mult10_pow > 0)
-                    for (int i = 0; i < mult10_pow; i++)
-                        res += '0';
+                    res = res + new string('0', mult10_pow);
                 return SimplifyNumber(res);
             }
 
