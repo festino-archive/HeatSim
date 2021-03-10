@@ -343,6 +343,8 @@ namespace HeatSim
         {
             if (expr is ExprConst)
                 return new ExprDouble((expr as ExprConst).Value.ToDouble());
+            if (expr is ExprNaN)
+                return new ExprDouble(0);
             IExpression res = ExprUtils.GetEmptyCopy(expr);
             foreach (IExpression arg in expr.GetArgs())
                 res.AddArg(ConvertFromExprConst(arg));
