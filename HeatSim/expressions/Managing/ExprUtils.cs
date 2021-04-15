@@ -42,5 +42,10 @@
                 return new ExprDerivative((expr as ExprDerivative).Orig, (expr as ExprDerivative).Var);
             return new ExprNaN();
         }
+
+        public static IExpression GetCopy_Slow(IExpression expr)
+        {
+            return ExprSimplifier.Substitute(expr, "", null);
+        }
     }
 }
