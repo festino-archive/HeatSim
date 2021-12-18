@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "4a85cf5f-c4c2-45ea-8e64-8b1259b21ad2": {
+      "ProjectGuid": "4a85cf5f-c4c2-45ea-8e64-8b1259b21ad2",
+      "DisplayName": "HeatSim",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
