@@ -244,5 +244,15 @@ namespace HeatSim
                 res.AddArg(Substitute(arg, varName, to));
             return res;
         }
+
+        public static bool IsDependsOn(IExpression expr, string varName)
+        {
+            if (expr is ExprRegFunc && expr.GetArgsCount() == 0 && (expr as ExprRegFunc).Name == varName)
+                return true;
+            foreach (IExpression arg in expr.GetArgs())
+                if (IsDependsOn(arg, varName))
+                    return true;
+            return false;
+        }
     }
 }
